@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fronte Meridionale - Costruiamo una Tesoreria Trasparente">
+    <title>Fronte Meridionale - Tesoreria Trasparente</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Navigation */
+        header {
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 255, 0.3);
+            margin-bottom: 60px;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            background: linear-gradient(90deg, #ff0000, #0096ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #0096ff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            margin-bottom: 80px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #ffffff;
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+        }
+
+        .hero .accent {
+            color: #ff0000;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 100px;
+            padding: 60px 0;
+            border-top: 2px solid rgba(0, 150, 255, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #0096ff, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #0096ff;
+            font-weight: 600;
+        }
+
+        .highlight-red {
+            color: #ff0000;
+            font-weight: 600;
+        }
+
+        /* Wallet Address Section */
+        .wallet-section {
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.1) 0%, rgba(255, 0, 0, 0.05) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 150, 255, 0.3);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .wallet-label {
+            color: #0096ff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .wallet-address {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #ffffff;
+            word-break: break-all;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid #ff0000;
+            margin-bottom: 15px;
+            user-select: all;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .wallet-address:hover {
+            background: rgba(0, 150, 255, 0.2);
+            border-left-color: #0096ff;
+        }
+
+        .copy-note {
+            color: #0096ff;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Call to Action Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 18px 50px;
+            background: linear-gradient(90deg, #ff0000, #0096ff);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.5), 0 0 60px rgba(255, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(0, 150, 255, 0.8), 0 0 80px rgba(255, 0, 0, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid rgba(0, 150, 255, 0.2);
+            margin-top: 80px;
+            color: #808080;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h3 {
+                font-size: 1.8rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1rem;
+            }
+
+            .wallet-section {
+                padding: 25px;
+            }
+
+            .wallet-address {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 40px 0;
+                margin-bottom: 60px;
+            }
+
+            section h3 {
+                font-size: 1.5rem;
+            }
+
+            section p {
+                font-size: 0.95rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>🇮🇹 FRONTE MERIDIONALE</h1>
+            <p>Tesoreria Trasparente sulla Blockchain</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Costruiamo una <span class="accent">Tesoreria Trasparente</span></h2>
+                <p>Il Fronte Meridionale sta costruendo un'organizzazione basata sulla trasparenza totale e sulla responsabilità verso i nostri iscritti. Ogni donazione è tracciata pubblicamente, ogni decisione è verificabile. Questa è la nuova politica.</p>
+            </section>
+
+            <!-- Mission Section -->
+            <section id="mission">
+                <h3>La Nostra Missione</h3>
+                <p>Il Sud Italia ha subito decenni di <span class="highlight-red">sottosviluppo strutturale</span> a causa di un sistema politico corrotto e inefficiente. Il Fronte Meridionale nasce con l'obiettivo di <span class="highlight">sostituire questo sistema</span> con una alternativa moderna, trasparente e al servizio dei territori meridionali.</p>
+                <p>Vogliamo costruire una politica <span class="highlight">fondata su principi di legalità, trasparenza e sviluppo reale</span> per il Mezzogiorno d'Italia.</p>
+            </section>
+
+            <!-- Transparency Section -->
+            <section id="transparency">
+                <h3>Trasparenza Garantita</h3>
+                <p>Ogni donazione che il Fronte Meridionale riceve merita <span class="highlight">trasparenza completa e accountability</span>. Crediamo che i cittadini abbiano il diritto di sapere esattamente come vengono utilizzati i loro contributi.</p>
+                <p>Non nascondiamo nulla. Non abbiamo conti segreti. Ogni euro è pubblico, tracciabile, e destinato unicamente al rafforzamento del movimento e dei suoi progetti territoriali.</p>
+            </section>
+
+            <!-- Blockchain Section -->
+            <section id="blockchain">
+                <h3>La Blockchain per la Verità</h3>
+                <p>Le donazioni al Fronte Meridionale sono tracciate attraverso la <span class="highlight">tecnologia blockchain</span>, la stessa che rende Bitcoin immutabile e verificabile. Questo significa che:</p>
+                <p>✓ <span class="highlight">Nessuno può alterare i registri</span> delle donazioni<br>
+                ✓ <span class="highlight">Chiunque può verificare</span> le transazioni in qualsiasi momento<br>
+                ✓ <span class="highlight">La trasparenza è garantita dalla matematica</span>, non da promesse<br>
+                ✓ <span class="highlight">Zero intermediari</span> - il controllo resta al popolo</p>
+            </section>
+
+            <!-- Public Treasury Section -->
+            <section id="treasury">
+                <h3>La Nostra Tesoreria Pubblica</h3>
+                <p>Questo è l'indirizzo blockchain ufficiale del Fronte Meridionale. Ogni donazione ricevuta a questo indirizzo è pubblica e verificabile da chiunque nel mondo, in tempo reale.</p>
+                <div class="wallet-section">
+                    <span class="wallet-label">Indirizzo Wallet Ufficiale</span>
+                    <div class="wallet-address">0x57f333c398c9625D84432aBD00871E2d8049cAaC</div>
+                    <span class="copy-note">Clicca per selezionare e copiare l'indirizzo</span>
+                </div>
+                <p style="margin-top: 30px; font-size: 0.95rem; color: #a0a0a0;">Puoi verificare tutte le transazioni su qualsiasi blockchain explorer inserendo questo indirizzo. La trasparenza totale è il nostro impegno.</p>
+            </section>
+
+            <!-- Territorial Nuclei Section -->
+            <section id="nuclei">
+                <h3>I Nuclei Territoriali</h3>
+                <p>Le donazioni al Fronte Meridionale finanziano direttamente la creazione e lo sviluppo di <span class="highlight">nuclei territoriali</span> in tutta la regione. Questi nuclei sono strutture locali del movimento presenti nei comuni, nelle province, nei quartieri.</p>
+                <p>Ogni nucleare territoriale è autonomo ma interconnesso con gli altri, creando una rete capillare di <span class="highlight">organizzazione popolare</span> dal basso. Le risorse finanziate dalle donazioni vengono utilizzate per:</p>
+                <p>• Creare spazi di organizzazione politica locale<br>
+                • Finanziare progetti di sviluppo territoriale<br>
+                • Sostenere le attività dei nostri attivisti<br>
+                • Portare la voce del Meridione in ogni comunità</p>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section id="cta" style="text-align: center;">
+                <h3>Unisciti a Noi</h3>
+                <p>La trasparenza non è una promessa vuota. È il nostro fondamento. Se credi in una politica diversa, se vuoi che il Sud Italia trovi una vera alternativa, se vuoi fare parte di questo movimento, sostieni il Fronte Meridionale.</p>
+                <a href="https://t.me/fronte_tesoreria_bot" class="cta-button">Sostieni il Fronte Meridionale</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fronte Meridionale | Costruiamo insieme il futuro del Sud</p>
+            <p>Tesoreria Trasparente sulla Blockchain</p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy wallet address to clipboard on click
+        document.querySelector('.wallet-address').addEventListener('click', function() {
+            const text = this.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = this.textContent;
+                this.textContent = '✓ Copiato!';
+                setTimeout(() => {
+                    this.textContent = original;
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
