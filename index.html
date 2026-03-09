@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fronte Meridionale</title>
 
 <style>
-
 :root{
   --text:#f5f5f5;
   --muted:#cfcfcf;
@@ -143,13 +140,7 @@ body{
 }
 
 .btn-primary{
-  background:
-  linear-gradient(
-    180deg,
-    #ff1b1b 0%,
-    var(--red) 60%,
-    var(--red-dark) 100%
-  );
+  background:linear-gradient(180deg,#ff1b1b 0%,var(--red) 60%,var(--red-dark) 100%);
   color:white;
   box-shadow:0 10px 24px rgba(225,6,0,0.28);
 }
@@ -160,21 +151,6 @@ body{
   color:white;
 }
 
-.telegram-link{
-  margin-top:18px;
-  text-align:center;
-}
-
-.telegram-link a{
-  color:#d9d9d9;
-  text-decoration:none;
-  font-size:0.98rem;
-}
-
-.telegram-link a:hover{
-  text-decoration:underline;
-}
-
 footer{
   text-align:center;
   padding:30px 0;
@@ -183,7 +159,6 @@ footer{
 }
 
 @media(max-width:768px){
-
   .hero-panel{
     padding:28px 20px;
   }
@@ -196,80 +171,62 @@ footer{
     width:100%;
     max-width:320px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
-
 <main class="hero">
+  <div class="container">
+    <section class="hero-panel">
 
-<div class="container">
+      <div class="logo-wrap">
+        <img src="images/logo.png" alt="Logo Fronte Meridionale">
+      </div>
 
-<section class="hero-panel">
+      <div class="silver-line"></div>
 
-<div class="logo-wrap">
-<img src="images/logo.png" alt="Logo Fronte Meridionale">
-</div>
+      <div class="hero-text">
+        <p>
+          Il <strong>Fronte Meridionale</strong> nasce con l'obiettivo di costruire un'organizzazione politica autonoma, moderna e radicata sul territorio, capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
+        </p>
 
-<div class="silver-line"></div>
+        <p>
+          Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture politiche nazionali che hanno limitato ogni reale alternativa di sviluppo, sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
+        </p>
 
-<div class="hero-text">
+        <p>
+          Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
+        </p>
+      </div>
 
-<p>
-Il <strong>Fronte Meridionale</strong> nasce con l'obiettivo di costruire un'organizzazione politica autonoma, moderna e radicata sul territorio, capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
-</p>
+      <div class="hero-statement">
+        <strong>Tesoreria pubblica e verificabile.</strong>
+        Ogni donazione è consultabile da chiunque.
+      </div>
 
-<p>
-Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture politiche nazionali che hanno limitato ogni reale alternativa di sviluppo, sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
-</p>
+      <div class="cta">
+        <a class="btn btn-primary"
+           href="https://t.me/fronte_tesoreria_bot"
+           target="_blank"
+           rel="noopener noreferrer">
+          Dona ora
+        </a>
 
-<p>
-Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
-</p>
+        <a class="btn btn-secondary"
+           href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC"
+           target="_blank"
+           rel="noopener noreferrer">
+          Verifica portafoglio
+        </a>
+      </div>
 
-</div>
-
-<div class="hero-statement">
-<strong>Tesoreria pubblica e verificabile.</strong>
-Ogni donazione è consultabile da chiunque.
-</div>
-
-<div class="cta">
-
-<a class="btn btn-primary"
-href="https://global.transak.com?cryptoCurrencyCode=MATIC&network=polygon&walletAddress=0x57f333c398c9625D84432aBD00871E2d8049cAaC"
-target="_blank"
-rel="noopener noreferrer">
-Dona ora
-</a>
-
-<a class="btn btn-secondary"
-href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC"
-target="_blank"
-rel="noopener noreferrer">
-Verifica portafoglio
-</a>
-
-</div>
-
-<div class="telegram-link">
-<a href="https://t.me/fronte_tesoreria_bot?start=dona" target="_blank" rel="noopener noreferrer">
-Oppure apri il bot Telegram ufficiale
-</a>
-</div>
-
-</section>
-
-</div>
-
+    </section>
+  </div>
 </main>
 
 <footer>
-Fronte Meridionale
+  Fronte Meridionale
 </footer>
-
 </body>
 </html>
