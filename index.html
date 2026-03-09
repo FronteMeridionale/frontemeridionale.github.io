@@ -14,7 +14,7 @@
   --muted:#cfcfcf;
   --red:#e10600;
   --red-dark:#8f0000;
-  --panel:rgba(10,10,10,0.78);
+  --panel:rgba(10,10,10,0.80);
   --line:rgba(255,255,255,0.08);
   --max:900px;
 }
@@ -29,9 +29,14 @@ body{
   color:var(--text);
   line-height:1.7;
 
-  background:
+  background-image:
   linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
-  url("images/lava-blue.jpg") center / cover no-repeat fixed;
+  url("images/lava-blue.jpg.png");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
 }
 
 .container{
