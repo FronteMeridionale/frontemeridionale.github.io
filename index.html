@@ -78,7 +78,6 @@ body{
   width:200px;
   height:2px;
   margin:10px auto 26px;
-
   background:
   linear-gradient(
     90deg,
@@ -88,7 +87,6 @@ body{
     rgba(220,220,220,0.5) 75%,
     rgba(255,255,255,0) 100%
   );
-
   box-shadow:0 0 8px rgba(255,255,255,0.15);
 }
 
@@ -110,14 +108,10 @@ body{
 .hero-statement{
   margin:35px auto 10px;
   padding:18px 20px;
-
   border-radius:16px;
   border:1px solid rgba(255,255,255,0.07);
-
   background:rgba(255,255,255,0.03);
-
   max-width:760px;
-
   font-size:clamp(1.05rem,1.8vw,1.2rem);
   font-weight:600;
 }
@@ -128,7 +122,6 @@ body{
 
 .cta{
   margin-top:35px;
-
   display:flex;
   justify-content:center;
   gap:18px;
@@ -138,15 +131,10 @@ body{
 .btn{
   text-decoration:none;
   font-weight:700;
-
   padding:16px 28px;
-
   border-radius:14px;
-
   font-size:clamp(0.95rem,1.4vw,1.1rem);
-
   min-width:180px;
-
   transition:0.2s;
 }
 
@@ -157,23 +145,34 @@ body{
 .btn-primary{
   background:
   linear-gradient(
-  180deg,
-  #ff1b1b 0%,
-  var(--red) 60%,
-  var(--red-dark) 100%
+    180deg,
+    #ff1b1b 0%,
+    var(--red) 60%,
+    var(--red-dark) 100%
   );
-
   color:white;
-
   box-shadow:0 10px 24px rgba(225,6,0,0.28);
 }
 
 .btn-secondary{
   background:rgba(255,255,255,0.06);
-
   border:1px solid rgba(255,255,255,0.14);
-
   color:white;
+}
+
+.telegram-link{
+  margin-top:18px;
+  text-align:center;
+}
+
+.telegram-link a{
+  color:#d9d9d9;
+  text-decoration:none;
+  font-size:0.98rem;
+}
+
+.telegram-link a:hover{
+  text-decoration:underline;
 }
 
 footer{
@@ -185,18 +184,18 @@ footer{
 
 @media(max-width:768px){
 
-.hero-panel{
-  padding:28px 20px;
-}
+  .hero-panel{
+    padding:28px 20px;
+  }
 
-.logo-wrap img{
-  width:min(220px,70vw);
-}
+  .logo-wrap img{
+    width:min(220px,70vw);
+  }
 
-.btn{
-  width:100%;
-  max-width:320px;
-}
+  .btn{
+    width:100%;
+    max-width:320px;
+  }
 
 }
 
@@ -241,21 +240,25 @@ Ogni donazione è consultabile da chiunque.
 <div class="cta">
 
 <a class="btn btn-primary"
-href="https://t.me/fronte_tesoreria_bot"
-target="_blank">
-
+href="https://global.transak.com?cryptoCurrencyCode=MATIC&network=polygon&walletAddress=0x57f333c398c9625D84432aBD00871E2d8049cAaC"
+target="_blank"
+rel="noopener noreferrer">
 Dona ora
-
 </a>
 
 <a class="btn btn-secondary"
 href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC"
-target="_blank">
-
+target="_blank"
+rel="noopener noreferrer">
 Verifica portafoglio
-
 </a>
 
+</div>
+
+<div class="telegram-link">
+<a href="https://t.me/fronte_tesoreria_bot?start=dona" target="_blank" rel="noopener noreferrer">
+Oppure apri il bot Telegram ufficiale
+</a>
 </div>
 
 </section>
@@ -265,9 +268,7 @@ Verifica portafoglio
 </main>
 
 <footer>
-
 Fronte Meridionale
-
 </footer>
 
 </body>
