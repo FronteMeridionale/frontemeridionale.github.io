@@ -1,114 +1,225 @@
-export default function PaginaFinaleFronteMeridionale() {
-  return (
-    <div className="min-h-screen bg-black text-white" style={{
-      backgroundImage:
-        'radial-gradient(circle at 50% 0%, rgba(225,6,0,0.10), transparent 32%), linear-gradient(rgba(8,8,8,0.80), rgba(8,8,8,0.88)), url("https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=1200&q=80")',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}>
-      <div className="mx-auto max-w-5xl px-6 py-8 md:py-12">
-        <div className="rounded-[28px] border border-white/10 bg-black/70 p-6 shadow-2xl shadow-black/50 backdrop-blur-[2px] md:p-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-8 flex justify-center">
-              <div className="rounded-[24px] bg-transparent p-2">
-                <img
-                  src="/mnt/data/logo con testo bianco.png"
-                  alt="Logo Fronte Meridionale"
-                  className="w-[240px] md:w-[320px]"
-                  style={{ filter: 'drop-shadow(0 0 18px rgba(225,6,0,0.18))' }}
-                />
-              </div>
-            </div>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fronte Meridionale</title>
 
-            <h1 className="text-4xl font-extrabold tracking-tight md:text-6xl">
-              Il Fronte Meridionale
-            </h1>
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:rgba(10,10,10,0.72);
+      --text:#f5f5f5;
+      --muted:#d3d3d3;
+      --red:#e10600;
+      --red-dark:#8f0000;
+      --line:rgba(255,255,255,0.08);
+      --max:960px;
+    }
 
-            <div className="mx-auto mt-5 h-px w-44 bg-gradient-to-r from-transparent via-red-600/80 to-transparent" />
+    *{
+      box-sizing:border-box;
+    }
 
-            <div className="mt-10 space-y-6 text-lg leading-9 text-zinc-200 md:text-[1.35rem] md:leading-10">
-              <p>
-                Il <strong>Fronte Meridionale</strong> nasce con l&apos;obiettivo di costruire
-                un&apos;organizzazione politica autonoma, moderna e radicata sul territorio,
-                capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
-              </p>
+    html{
+      scroll-behavior:smooth;
+    }
 
-              <p>
-                Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture
-                politiche nazionali che hanno limitato ogni reale alternativa di sviluppo,
-                sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
-              </p>
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.82) 100%),
+        url("images/lava.jpg") center / cover no-repeat fixed;
+      line-height:1.7;
+    }
 
-              <p>
-                Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica
-                fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
-              </p>
-            </div>
+    .container{
+      width:min(92%, var(--max));
+      margin:0 auto;
+    }
 
-            <h2 className="mt-14 text-2xl font-extrabold md:text-4xl">Trasparenza e responsabilità</h2>
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 0;
+    }
 
-            <div className="mt-6 space-y-6 text-lg leading-9 text-zinc-200 md:text-[1.28rem] md:leading-10">
-              <p>
-                Trasparenza, organizzazione e responsabilità sono alla base di un progetto politico serio.
-              </p>
-              <p>
-                Crediamo che solo attraverso regole chiare e strumenti verificabili sia possibile
-                restituire fiducia ai cittadini e ricostruire un rapporto autentico tra politica e società.
-              </p>
-              <p>
-                Per questo il Fronte Meridionale promuove un modello organizzativo basato sulla <strong>gestione pubblica e verificabile delle risorse</strong>,
-                affinché ogni contributo possa essere controllato e tracciato.
-              </p>
-            </div>
+    .hero-panel{
+      width:100%;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:40px 28px 48px;
+      text-align:center;
+      backdrop-filter:blur(2px);
+      box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    }
 
-            <div className="mt-10 rounded-2xl border border-red-500/20 bg-red-500/5 px-6 py-5 text-xl font-semibold text-white shadow-lg shadow-red-900/10 md:text-2xl">
-              Tesoreria pubblica e verificabile.<br className="hidden md:block" /> Ogni donazione è consultabile da chiunque.
-            </div>
+    .logo-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:24px;
+    }
 
-            <h2 className="mt-14 text-2xl font-extrabold md:text-4xl">Partecipazione e democrazia</h2>
+    .logo-wrap img{
+      width:min(340px, 70vw);
+      height:auto;
+      display:block;
+      filter:drop-shadow(0 0 16px rgba(225,6,0,0.18));
+    }
 
-            <div className="mt-6 space-y-6 text-lg leading-9 text-zinc-200 md:text-[1.28rem] md:leading-10">
-              <p>
-                Crediamo che un progetto politico debba fondarsi sulla <strong>partecipazione diretta delle persone</strong>
-                e sulla responsabilità collettiva nelle scelte che riguardano il futuro del territorio.
-              </p>
-              <p>
-                Il coinvolgimento dei cittadini non è solo un principio, ma una condizione necessaria
-                per costruire una democrazia reale e funzionante.
-              </p>
-              <p>
-                Il Fronte Meridionale vuole essere uno spazio aperto di partecipazione civile e politica,
-                capace di restituire <strong>fiducia e speranza ai cittadini del Mezzogiorno</strong>.
-              </p>
-            </div>
+    h1{
+      margin:0 0 24px;
+      font-size:clamp(2rem, 4.6vw, 3.6rem);
+      line-height:1.15;
+      font-weight:800;
+      color:#ffffff;
+    }
 
-            <h2 className="mt-14 text-2xl font-extrabold md:text-4xl">Invito alla partecipazione</h2>
+    .hero-text{
+      max-width:760px;
+      margin:0 auto;
+    }
 
-            <div className="mt-6 space-y-6 text-lg leading-9 text-zinc-200 md:text-[1.28rem] md:leading-10">
-              <p>
-                La costruzione di un progetto politico libero, trasparente e indipendente richiede l&apos;impegno di tutti.
-              </p>
-              <p>
-                Ogni contributo rappresenta un passo verso la costruzione di una nuova organizzazione politica
-                capace di difendere e valorizzare il <strong>Mezzogiorno</strong>.
-              </p>
-            </div>
+    .hero-text p{
+      margin:0 0 18px;
+      font-size:clamp(1rem, 1.7vw, 1.18rem);
+      color:var(--muted);
+    }
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 md:flex-row">
-              <button className="min-w-[220px] rounded-2xl bg-gradient-to-b from-red-500 via-red-600 to-red-800 px-8 py-4 text-xl font-bold text-white shadow-[0_14px_36px_rgba(225,6,0,0.35)] transition hover:-translate-y-0.5">
-                Dona ora
-              </button>
-              <button className="min-w-[220px] rounded-2xl border border-white/12 bg-white/5 px-8 py-4 text-xl font-bold text-white shadow-lg transition hover:bg-white/10">
-                Verifica portafoglio
-              </button>
-            </div>
-          </div>
+    .hero-statement{
+      margin:30px auto 0;
+      max-width:760px;
+      font-size:clamp(1.08rem, 2.1vw, 1.34rem);
+      line-height:1.6;
+      font-weight:700;
+      color:#ffffff;
+    }
+
+    .hero-statement strong{
+      color:var(--red);
+    }
+
+    .cta{
+      margin-top:36px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      min-width:190px;
+      padding:16px 30px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:700;
+      font-size:clamp(0.96rem, 1.5vw, 1.08rem);
+      transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg, #f01b1b 0%, var(--red) 58%, var(--red-dark) 100%);
+      color:#ffffff;
+      box-shadow:0 12px 28px rgba(225,6,0,0.24);
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 16px 34px rgba(225,6,0,0.30);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.14);
+      color:#ffffff;
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.1);
+      border-color:rgba(255,255,255,0.22);
+    }
+
+    footer{
+      text-align:center;
+      padding:0 0 28px;
+      color:#b0b0b0;
+      font-size:0.95rem;
+    }
+
+    @media (max-width:768px){
+      .hero{
+        padding:28px 0;
+      }
+
+      .hero-panel{
+        padding:28px 18px 34px;
+        border-radius:18px;
+      }
+
+      .cta{
+        gap:12px;
+      }
+
+      .btn{
+        width:100%;
+        max-width:320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="container">
+      <section class="hero-panel">
+        <div class="logo-wrap">
+          <img src="images/logo.png" alt="Logo Fronte Meridionale" />
         </div>
 
-        <footer className="pb-2 pt-8 text-center text-lg text-zinc-400">
-          Fronte Meridionale
-        </footer>
-      </div>
+        <h1>Il Fronte Meridionale</h1>
+
+        <div class="hero-text">
+          <p>
+            Il <strong>Fronte Meridionale</strong> nasce con l'obiettivo di costruire un'organizzazione politica autonoma, moderna e radicata sul territorio, capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
+          </p>
+
+          <p>
+            Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture politiche nazionali che hanno limitato ogni reale alternativa di sviluppo, sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
+          </p>
+
+          <p>
+            Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
+          </p>
+        </div>
+
+        <div class="hero-statement">
+          <strong>Tesoreria pubblica e verificabile.</strong>
+          Ogni donazione è consultabile da chiunque.
+        </div>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="https://t.me/fronte_tesoreria_bot" target="_blank" rel="noopener noreferrer">
+            Dona ora
+          </a>
+
+          <a class="btn btn-secondary" href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC" target="_blank" rel="noopener noreferrer">
+            Verifica portafoglio
+          </a>
+        </div>
+      </section>
     </div>
-  );
-}
+  </main>
+
+  <footer>
+    Fronte Meridionale
+  </footer>
+</body>
+</html>
