@@ -1,225 +1,219 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fronte Meridionale</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fronte Meridionale</title>
 
-  <style>
-    :root{
-      --bg:#0b0b0b;
-      --panel:rgba(10,10,10,0.72);
-      --text:#f5f5f5;
-      --muted:#d3d3d3;
-      --red:#e10600;
-      --red-dark:#8f0000;
-      --line:rgba(255,255,255,0.08);
-      --max:960px;
-    }
+<style>
 
-    *{
-      box-sizing:border-box;
-    }
+:root{
+  --text:#f5f5f5;
+  --muted:#d3d3d3;
+  --red:#e10600;
+  --red-dark:#8f0000;
+  --panel:rgba(10,10,10,0.75);
+  --line:rgba(255,255,255,0.08);
+  --max:960px;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+*{
+  box-sizing:border-box;
+}
 
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.82) 100%),
-        url("images/lava.jpg") center / cover no-repeat fixed;
-      line-height:1.7;
-    }
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  line-height:1.7;
 
-    .container{
-      width:min(92%, var(--max));
-      margin:0 auto;
-    }
+  background:
+  linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.82)),
+  url("images/lava.jpg") center / cover no-repeat fixed;
+}
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:48px 0;
-    }
+.container{
+  width:min(92%, var(--max));
+  margin:auto;
+}
 
-    .hero-panel{
-      width:100%;
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:40px 28px 48px;
-      text-align:center;
-      backdrop-filter:blur(2px);
-      box-shadow:0 20px 60px rgba(0,0,0,0.35);
-    }
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 0;
+}
 
-    .logo-wrap{
-      display:flex;
-      justify-content:center;
-      margin-bottom:24px;
-    }
+.hero-panel{
+  width:100%;
+  text-align:center;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:40px 30px;
+  backdrop-filter:blur(3px);
+}
 
-    .logo-wrap img{
-      width:min(340px, 70vw);
-      height:auto;
-      display:block;
-      filter:drop-shadow(0 0 16px rgba(225,6,0,0.18));
-    }
+.logo-wrap{
+  display:flex;
+  justify-content:center;
+  margin-bottom:25px;
+}
 
-    h1{
-      margin:0 0 24px;
-      font-size:clamp(2rem, 4.6vw, 3.6rem);
-      line-height:1.15;
-      font-weight:800;
-      color:#ffffff;
-    }
+.logo-wrap img{
+  width:min(340px,70vw);
+  height:auto;
+  filter:drop-shadow(0 0 14px rgba(225,6,0,0.18));
+}
 
-    .hero-text{
-      max-width:760px;
-      margin:0 auto;
-    }
+h1{
+  margin:0 0 25px;
+  font-size:clamp(2rem,4vw,3.5rem);
+  font-weight:800;
+}
 
-    .hero-text p{
-      margin:0 0 18px;
-      font-size:clamp(1rem, 1.7vw, 1.18rem);
-      color:var(--muted);
-    }
+.hero-text{
+  max-width:760px;
+  margin:auto;
+}
 
-    .hero-statement{
-      margin:30px auto 0;
-      max-width:760px;
-      font-size:clamp(1.08rem, 2.1vw, 1.34rem);
-      line-height:1.6;
-      font-weight:700;
-      color:#ffffff;
-    }
+.hero-text p{
+  margin-bottom:18px;
+  color:var(--muted);
+  font-size:clamp(1rem,1.6vw,1.15rem);
+}
 
-    .hero-statement strong{
-      color:var(--red);
-    }
+.hero-statement{
+  margin:30px auto;
+  max-width:760px;
+  font-weight:700;
+  font-size:clamp(1.1rem,2vw,1.35rem);
+}
 
-    .cta{
-      margin-top:36px;
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      flex-wrap:wrap;
-    }
+.hero-statement strong{
+  color:var(--red);
+}
 
-    .btn{
-      display:inline-block;
-      min-width:190px;
-      padding:16px 30px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:700;
-      font-size:clamp(0.96rem, 1.5vw, 1.08rem);
-      transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    }
+.cta{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+.btn{
+  text-decoration:none;
+  font-weight:700;
+  padding:16px 30px;
+  border-radius:14px;
+  font-size:clamp(0.95rem,1.4vw,1.1rem);
+  min-width:180px;
+  text-align:center;
+  transition:0.2s;
+}
 
-    .btn-primary{
-      background:linear-gradient(180deg, #f01b1b 0%, var(--red) 58%, var(--red-dark) 100%);
-      color:#ffffff;
-      box-shadow:0 12px 28px rgba(225,6,0,0.24);
-    }
+.btn-primary{
+  background:linear-gradient(180deg,#f01b1b 0%,var(--red) 58%,var(--red-dark) 100%);
+  color:white;
+  box-shadow:0 12px 26px rgba(225,6,0,0.25);
+}
 
-    .btn-primary:hover{
-      box-shadow:0 16px 34px rgba(225,6,0,0.30);
-    }
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
 
-    .btn-secondary{
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.14);
-      color:#ffffff;
-    }
+.btn-secondary{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.14);
+  color:white;
+}
 
-    .btn-secondary:hover{
-      background:rgba(255,255,255,0.1);
-      border-color:rgba(255,255,255,0.22);
-    }
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.1);
+}
 
-    footer{
-      text-align:center;
-      padding:0 0 28px;
-      color:#b0b0b0;
-      font-size:0.95rem;
-    }
+footer{
+  text-align:center;
+  padding:30px 0;
+  color:#b0b0b0;
+  font-size:0.95rem;
+}
 
-    @media (max-width:768px){
-      .hero{
-        padding:28px 0;
-      }
+@media(max-width:768px){
 
-      .hero-panel{
-        padding:28px 18px 34px;
-        border-radius:18px;
-      }
+.hero-panel{
+  padding:30px 20px;
+}
 
-      .cta{
-        gap:12px;
-      }
+.btn{
+  width:100%;
+  max-width:320px;
+}
 
-      .btn{
-        width:100%;
-        max-width:320px;
-      }
-    }
-  </style>
+}
+
+</style>
 </head>
+
 <body>
-  <main class="hero">
-    <div class="container">
-      <section class="hero-panel">
-        <div class="logo-wrap">
-          <img src="images/logo.png" alt="Logo Fronte Meridionale" />
-        </div>
 
-        <h1>Il Fronte Meridionale</h1>
+<main class="hero">
 
-        <div class="hero-text">
-          <p>
-            Il <strong>Fronte Meridionale</strong> nasce con l'obiettivo di costruire un'organizzazione politica autonoma, moderna e radicata sul territorio, capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
-          </p>
+<div class="container">
 
-          <p>
-            Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture politiche nazionali che hanno limitato ogni reale alternativa di sviluppo, sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
-          </p>
+<section class="hero-panel">
 
-          <p>
-            Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
-          </p>
-        </div>
+<div class="logo-wrap">
+<img src="images/logo.png" alt="Logo Fronte Meridionale">
+</div>
 
-        <div class="hero-statement">
-          <strong>Tesoreria pubblica e verificabile.</strong>
-          Ogni donazione è consultabile da chiunque.
-        </div>
+<h1>Il Fronte Meridionale</h1>
 
-        <div class="cta">
-          <a class="btn btn-primary" href="https://t.me/fronte_tesoreria_bot" target="_blank" rel="noopener noreferrer">
-            Dona ora
-          </a>
+<div class="hero-text">
 
-          <a class="btn btn-secondary" href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC" target="_blank" rel="noopener noreferrer">
-            Verifica portafoglio
-          </a>
-        </div>
-      </section>
-    </div>
-  </main>
+<p>
+Il <strong>Fronte Meridionale</strong> nasce con l'obiettivo di costruire un'organizzazione politica autonoma, moderna e radicata sul territorio, capace di rappresentare realmente gli interessi del <strong>Mezzogiorno</strong>.
+</p>
 
-  <footer>
-    Fronte Meridionale
-  </footer>
+<p>
+Per troppo tempo il <strong>Mezzogiorno</strong> è stato amministrato da strutture politiche nazionali che hanno limitato ogni reale alternativa di sviluppo, sottraendo risorse ai territori e alimentando sistemi decisionali poco trasparenti.
+</p>
+
+<p>
+Il nostro obiettivo è superare questo modello, costruendo una nuova realtà politica fondata sulla partecipazione dei cittadini e sulla responsabilità nella gestione delle risorse pubbliche.
+</p>
+
+</div>
+
+<div class="hero-statement">
+<strong>Tesoreria pubblica e verificabile.</strong><br>
+Ogni donazione è consultabile da chiunque.
+</div>
+
+<div class="cta">
+
+<a class="btn btn-primary" href="https://t.me/fronte_tesoreria_bot" target="_blank">
+Dona ora
+</a>
+
+<a class="btn btn-secondary" href="https://polygonscan.com/address/0x57f333c398c9625D84432aBD00871E2d8049cAaC" target="_blank">
+Verifica portafoglio
+</a>
+
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+<footer>
+Fronte Meridionale
+</footer>
+
 </body>
 </html>
