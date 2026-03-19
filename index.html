@@ -525,6 +525,24 @@ section {
   margin: 0;
 }
 
+
+.stat-value-success {
+  color: #4caf50;
+}
+
+.progress-bar-fill--complete {
+  width: 100%;
+  background: linear-gradient(90deg, #1a6b1a, #4caf50);
+}
+
+.dashboard-guest-view {
+  text-align: center;
+}
+
+.dashboard-msg--spaced {
+  margin-bottom: 24px;
+}
+
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--line2);
@@ -534,7 +552,31 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ── Responsive ── */
+/* ── Toast notification ── */
+.fm-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(30,30,30,0.97);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  color: var(--text);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  max-width: calc(100vw - 40px);
+  text-align: center;
+}
+
+.fm-toast.fm-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 @media (max-width: 640px) {
   .hero-panel {
     padding: 36px 20px;
@@ -799,7 +841,7 @@ footer {
             </div>
             <div class="stat-box">
               <div class="stat-label">Diritto di voto</div>
-              <div class="stat-value" style="color:#4caf50;">Maturato ✓</div>
+              <div class="stat-value stat-value-success">Maturato ✓</div>
             </div>
           </div>
 
@@ -809,7 +851,7 @@ footer {
               <span>100%</span>
             </div>
             <div class="progress-bar-track">
-              <div class="progress-bar-fill" style="width:100%; background:linear-gradient(90deg,#1a6b1a,#4caf50);" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar-fill progress-bar-fill--complete" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
 
@@ -820,8 +862,8 @@ footer {
         </div>
 
         <!-- Stato: non autenticato (nascosto di default) -->
-        <div id="view-guest" hidden style="text-align:center;">
-          <p class="dashboard-msg" style="margin-bottom:24px;">
+        <div id="view-guest" hidden class="dashboard-guest-view">
+          <p class="dashboard-msg dashboard-msg--spaced">
             Accedi per visualizzare il tuo stato di partecipazione.
           </p>
           <button
@@ -880,6 +922,34 @@ footer {
  * collegata a chiamate REST o autenticazione senza modificare l'HTML.
  */
 
+/* ── Utility: toast accessibile ── */
+let _toastTimer = null;
+function showToast(message) {
+  let toast = document.getElementById('fm-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'fm-toast';
+    toast.className = 'fm-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('fm-toast--visible');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(function () {
+    toast.classList.remove('fm-toast--visible');
+  }, 4000);
+}
+
+/* ── Utility: scroll rispettando prefers-reduced-motion ── */
+function smoothScrollTo(selector) {
+  var el = document.querySelector(selector);
+  if (!el) return;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+}
+
 /* ── Configurazione ── */
 const CONFIG = {
   API_BASE: '', // es. 'https://api.frontemeridionale.it/v1'
@@ -903,7 +973,7 @@ function onLoginClick() {
   // TODO: integrare con sistema di autenticazione
   console.info('[FM] onLoginClick() — stub pronto per integrazione');
   // es. window.location.href = CONFIG.API_BASE + '/auth/login';
-  alert('Funzione di accesso in arrivo. Torna presto!');
+  showToast('Funzione di accesso in arrivo. Torna presto!');
 }
 
 /* ──────────────────────────────────────────────
@@ -913,7 +983,7 @@ function onLoginClick() {
 function onJoinCommunity() {
   console.info('[FM] onJoinCommunity() — stub pronto per integrazione');
   // es. fetch(CONFIG.API_BASE + '/contributions', { method:'POST', body: JSON.stringify({amount: CONFIG.MIN_CONTRIBUTION}) })
-  document.getElementById('contributi').scrollIntoView({ behavior: 'smooth' });
+  smoothScrollTo('#contributi');
 }
 
 /* ──────────────────────────────────────────────
@@ -923,7 +993,7 @@ function onJoinCommunity() {
 function onJoinVoter() {
   console.info('[FM] onJoinVoter() — stub pronto per integrazione');
   // es. fetch(CONFIG.API_BASE + '/contributions', { method:'POST', body: JSON.stringify({upgrade_to_voter: true}) })
-  document.getElementById('contributi').scrollIntoView({ behavior: 'smooth' });
+  smoothScrollTo('#contributi');
 }
 
 /* ──────────────────────────────────────────────
@@ -932,7 +1002,7 @@ function onJoinVoter() {
 ────────────────────────────────────────────── */
 function onContributeMore() {
   console.info('[FM] onContributeMore() — stub pronto per integrazione');
-  document.getElementById('contributi').scrollIntoView({ behavior: 'smooth' });
+  smoothScrollTo('#contributi');
 }
 
 /* ──────────────────────────────────────────────
