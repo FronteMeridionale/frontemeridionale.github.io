@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Fronte Meridionale</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Logo Fronte Meridionale">
-        <h1>Benvenuti in Fronte Meridionale</h1>
+    <header class="hero">
+        <img src="lava-blue.jpg" alt="Lava Blue" />
+        <h1>Welcome to Fronte Meridionale</h1>
+        <button onclick="onLoginClick()">Login</button>
     </header>
-    <section id="hero">
-        <h2>Hero Section</h2>
-        <p>Benvenuto nel nostro sito!</p>
-    </section>
+
     <section id="come-funziona">
         <h2>Come Funziona</h2>
-        <p>Descrizione su come funziona il servizio.</p>
+        <p>Details about how it works...</p>
     </section>
+
     <section id="contributi">
         <h2>Contributi</h2>
-        <p>Dettagli sui contributi degli utenti.</p>
+        <p>Information about contributions...</p>
+        <button onclick="onContributeMore()">Contribute More</button>
     </section>
+
     <section id="dashboard">
         <h2>Dashboard</h2>
-        <p>Informazioni sulla dashboard.</p>
+        <div id="user-status"></div>
+        <button onclick="onJoinCommunity()">Join our Community</button>
+        <button onclick="onJoinVoter()">Join as Voter</button>
     </section>
-    <section id="missione">
-        <h2>Missione</h2>
-        <p>La nostra missione è...</p>
-    </section>
+
     <footer>
-        <p>&copy; 2026 Fronte Meridionale. Tutti i diritti riservati.</p>
+        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Logo" />
+        <p>Missione: Our mission statement...</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        fetchUserStatus();
+        renderDashboard();
+    </script>
 </body>
 </html>
