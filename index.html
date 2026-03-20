@@ -1,44 +1,1057 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Fronte Meridionale</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fronte Meridionale — Partecipa alla comunità</title>
+<meta name="description" content="Sostieni il Fronte Meridionale, contribuisci alla crescita della comunità e accedi progressivamente alla governance.">
+
+<style>
+:root {
+  --text: #f5f5f5;
+  --muted: #cfcfcf;
+  --muted2: #a0a0a0;
+  --red: #e10600;
+  --red-dark: #8f0000;
+  --red-light: #ff4040;
+  --panel: rgba(10,10,10,0.82);
+  --panel2: rgba(20,20,20,0.75);
+  --line: rgba(255,255,255,0.08);
+  --line2: rgba(255,255,255,0.05);
+  --max: 960px;
+  --radius: 18px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.84), rgba(0,0,0,0.93)),
+    url("lava-blue.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ── Layout ── */
+.container {
+  width: min(92%, var(--max));
+  margin: auto;
+}
+
+section {
+  padding: 72px 0;
+}
+
+/* ── Header ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5,5,5,0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 16px;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(225,6,0,0.2));
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--red-light);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: linear-gradient(160deg, var(--red-light) 0%, var(--red) 55%, var(--red-dark) 100%);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(225,6,0,0.30);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 30px rgba(225,6,0,0.42);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: var(--muted);
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  min-width: unset;
+}
+
+/* ── Silver divider ── */
+.silver-line {
+  width: 180px;
+  height: 2px;
+  margin: 10px auto 28px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(220,220,220,0.45) 25%,
+    rgba(255,255,255,0.9) 50%,
+    rgba(220,220,220,0.45) 75%,
+    rgba(255,255,255,0) 100%
+  );
+  box-shadow: 0 0 8px rgba(255,255,255,0.12);
+}
+
+/* ── Hero ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.hero-panel {
+  width: 100%;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 52px 36px;
+  backdrop-filter: blur(4px);
+}
+
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.logo-wrap img {
+  width: min(260px, 62vw);
+  height: auto;
+  filter: drop-shadow(0 0 12px rgba(225,6,0,0.18));
+}
+
+.hero-title {
+  margin: 20px 0 10px;
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto 10px;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--muted);
+}
+
+.hero-cta {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-cta .btn {
+  min-width: 180px;
+}
+
+/* ── Section headings ── */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  max-width: 560px;
+  margin: 0 auto 44px;
+}
+
+/* ── Come funziona ── */
+#come-funziona {
+  border-top: 1px solid var(--line2);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  counter-reset: step-counter;
+}
+
+.step-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  counter-increment: step-counter;
+  position: relative;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--red-light), var(--red-dark));
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.step-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.step-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ── Livelli di partecipazione ── */
+#contributi {
+  border-top: 1px solid var(--line2);
+}
+
+.livelli-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.livello-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.livello-card.featured {
+  border-color: rgba(225,6,0,0.45);
+  background: rgba(225,6,0,0.06);
+}
+
+.livello-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.07);
+  color: var(--muted);
+  align-self: flex-start;
+}
+
+.livello-card.featured .livello-badge {
+  background: rgba(225,6,0,0.18);
+  color: #ff7070;
+}
+
+.livello-nome {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.livello-prezzo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red-light);
+  margin: 0;
+  line-height: 1;
+}
+
+.livello-prezzo span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted2);
+}
+
+.livello-desc {
+  color: var(--muted);
+  font-size: 0.97rem;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.livello-note {
+  font-size: 0.87rem;
+  color: var(--muted2);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.livello-card .btn {
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Dashboard ── */
+#dashboard {
+  border-top: 1px solid var(--line2);
+}
+
+.dashboard-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dashboard-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(225,6,0,0.5);
+}
+
+.status-dot.gold {
+  background: #d4a017;
+  box-shadow: 0 0 8px rgba(212,160,23,0.5);
+}
+
+.status-label {
+  font-size: 0.82rem;
+  color: var(--muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dashboard-progress {
+  margin: 20px 0 10px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--red-dark), var(--red-light));
+  transition: width 0.6s ease;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.stat-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dashboard-msg {
+  font-size: 0.93rem;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.dashboard-msg strong {
+  color: #fff;
+}
+
+.dashboard-card .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Missione ── */
+#missione {
+  border-top: 1px solid var(--line2);
+}
+
+.missione-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 52px 40px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.missione-quote {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  color: #fff;
+  font-style: italic;
+  margin: 0 0 28px;
+  line-height: 1.55;
+}
+
+.missione-body {
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  margin: 0;
+}
+
+.stat-value-success {
+  color: #4caf50;
+}
+
+.progress-bar-fill--complete {
+  width: 100%;
+  background: linear-gradient(90deg, #1a6b1a, #4caf50);
+}
+
+.dashboard-guest-view {
+  text-align: center;
+}
+
+.dashboard-msg--spaced {
+  margin-bottom: 24px;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--line2);
+  text-align: center;
+  padding: 32px 0;
+  color: var(--muted2);
+  font-size: 0.9rem;
+}
+
+/* ── Toast notification ── */
+.fm-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(30,30,30,0.97);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  color: var(--text);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  max-width: calc(100vw - 40px);
+  text-align: center;
+}
+
+.fm-toast.fm-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+  .hero-panel {
+    padding: 36px 20px;
+  }
+
+  .logo-wrap img {
+    width: min(200px, 70vw);
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .missione-panel {
+    padding: 36px 22px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .header-logo img {
+    height: 34px;
+  }
+}
+
+@media (max-width: 420px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .livelli-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-    <header class="hero">
-        <img src="lava-blue.jpg" alt="Lava Blue" />
-        <h1>Welcome to Fronte Meridionale</h1>
-        <button onclick="onLoginClick()">Login</button>
-    </header>
 
-    <section id="come-funziona">
-        <h2>Come Funziona</h2>
-        <p>Details about how it works...</p>
-    </section>
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a class="header-logo" href="#hero" aria-label="Fronte Meridionale — torna in cima">
+        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Logo Fronte Meridionale">
+      </a>
+      <nav class="header-nav" aria-label="Navigazione principale">
+        <button
+          class="btn btn-ghost"
+          type="button"
+          data-action="login"
+          onclick="onLoginClick()"
+          aria-label="Accedi al tuo account">
+          Entra
+        </button>
+        <a class="btn btn-primary btn-sm" href="#contributi" data-action="join">Partecipa</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-    <section id="contributi">
-        <h2>Contributi</h2>
-        <p>Information about contributions...</p>
-        <button onclick="onContributeMore()">Contribute More</button>
-    </section>
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<main id="main-content">
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-panel">
 
-    <section id="dashboard">
-        <h2>Dashboard</h2>
-        <div id="user-status"></div>
-        <button onclick="onJoinCommunity()">Join our Community</button>
-        <button onclick="onJoinVoter()">Join as Voter</button>
-    </section>
+      <div class="logo-wrap">
+        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Fronte Meridionale">
+      </div>
 
-    <footer>
-        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Logo" />
-        <p>Missione: Our mission statement...</p>
-    </footer>
-    <script>
-        fetchUserStatus();
-        renderDashboard();
-    </script>
+      <div class="silver-line" role="presentation"></div>
+
+      <h1 class="hero-title" id="hero-heading">Partecipa alla comunità</h1>
+      <p class="hero-subtitle">
+        Sostieni il progetto, contribuisci alla crescita della comunità
+        e accedi progressivamente alla governance.
+      </p>
+
+      <div class="hero-cta">
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-action="login"
+          onclick="onLoginClick()">
+          Partecipa
+        </button>
+        <a class="btn btn-secondary" href="#come-funziona">Scopri come funziona</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ COME FUNZIONA ═══════════════════ -->
+<section id="come-funziona" aria-labelledby="come-funziona-heading">
+  <div class="container">
+    <h2 class="section-title" id="come-funziona-heading">Come funziona</h2>
+    <p class="section-sub">Un percorso semplice, in tre passi.</p>
+
+    <div class="steps-grid" role="list">
+
+      <article class="step-card" role="listitem">
+        <div class="step-number" aria-hidden="true">1</div>
+        <h3 class="step-label">Entra</h3>
+        <p class="step-desc">
+          Entra nella piattaforma e attiva il tuo percorso di partecipazione.
+          Nessuna competenza tecnica richiesta.
+        </p>
+      </article>
+
+      <article class="step-card" role="listitem">
+        <div class="step-number" aria-hidden="true">2</div>
+        <h3 class="step-label">Contribuisci</h3>
+        <p class="step-desc">
+          Con un contributo a partire da 15€ diventi sostenitore
+          e fai parte della comunità.
+        </p>
+      </article>
+
+      <article class="step-card" role="listitem">
+        <div class="step-number" aria-hidden="true">3</div>
+        <h3 class="step-label">Partecipa</h3>
+        <p class="step-desc">
+          Raggiunti 50€ di contributi complessivi nell'anno,
+          maturi il diritto di voto nella governance della comunità.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ LIVELLI DI CONTRIBUTO ═══════════════════ -->
+<section id="contributi" aria-labelledby="contributi-heading">
+  <div class="container">
+    <h2 class="section-title" id="contributi-heading">Livelli di partecipazione</h2>
+    <p class="section-sub">
+      Inizia da 15€, entra come sostenitore e, al raggiungimento di 50€ complessivi nell’anno,
+      diventa elettore.
+    </p>
+
+    <div class="livelli-grid">
+
+      <!-- Sostenitore -->
+      <div class="livello-card" role="article" aria-labelledby="livello-sostenitore">
+        <span class="livello-badge">Primo passo</span>
+        <h3 class="livello-nome" id="livello-sostenitore">Sostenitore</h3>
+        <p class="livello-prezzo">15€ <span>contributo minimo</span></p>
+        <p class="livello-desc">
+          Con un contributo minimo di 15€ entri nella comunità come sostenitore.
+          Il tuo sostegno è il punto di partenza della partecipazione.
+        </p>
+        <p class="livello-note">
+          Puoi iniziare da 15€ e aumentare il tuo contributo nel corso dell'anno.
+        </p>
+        <button
+          class="btn btn-secondary"
+          type="button"
+          data-action="join-community"
+          onclick="onJoinCommunity()">
+          Partecipa
+        </button>
+      </div>
+
+      <!-- Elettore -->
+      <div class="livello-card featured" role="article" aria-labelledby="livello-elettore">
+        <span class="livello-badge">Diritto di voto</span>
+        <h3 class="livello-nome" id="livello-elettore">Elettore</h3>
+        <p class="livello-prezzo">50€ <span>cumulativi nell'anno</span></p>
+        <p class="livello-desc">
+          Al raggiungimento di 50€ di contributi complessivi nell'anno
+          maturi il diritto di voto nella governance della comunità.
+        </p>
+        <p class="livello-note">
+          I 50€ sono cumulativi: puoi iniziare da 15€ e completare il percorso
+          fino a 50€ nel corso dell'anno.
+        </p>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-action="join-voter"
+          onclick="onJoinVoter()">
+          Diventa elettore
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STATO UTENTE / DASHBOARD ═══════════════════ -->
+<section id="dashboard" aria-labelledby="dashboard-heading">
+  <div class="container">
+    <h2 class="section-title" id="dashboard-heading">Il tuo stato</h2>
+    <p class="section-sub">Monitora il tuo percorso di partecipazione.</p>
+
+    <div class="dashboard-wrap">
+      <div class="dashboard-card" id="dashboard-card" role="region" aria-live="polite">
+
+        <!-- Stato: Sostenitore (mock) -->
+        <div id="view-sostenitore">
+          <div class="dashboard-header">
+            <div class="status-dot" aria-hidden="true"></div>
+            <div>
+              <div class="status-label">Stato attuale</div>
+              <div class="status-value" id="user-status-label">Sostenitore 2026</div>
+            </div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-box">
+              <div class="stat-label">Hai contribuito</div>
+              <div class="stat-value" id="user-total">20€</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Mancano per elettore</div>
+              <div class="stat-value" id="user-remaining">30€</div>
+            </div>
+          </div>
+
+          <div class="dashboard-progress" aria-label="Progressione verso il diritto di voto">
+            <div class="progress-label">
+              <span>Avanzamento verso elettore</span>
+              <span id="user-progress-pct">40%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="user-progress-bar" style="width:40%" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <p class="dashboard-msg">
+            Ti mancano ancora <strong id="user-remaining-msg">30€</strong> per maturare il diritto di voto.
+            Ricorda: i contributi sono cumulativi nell'anno in corso.
+          </p>
+
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-action="contribute-more"
+            onclick="onContributeMore()">
+            Contribuisci ancora
+          </button>
+        </div>
+
+        <!-- Stato: Elettore (nascosto di default, visibile con fetchUserStatus) -->
+        <div id="view-elettore" hidden>
+          <div class="dashboard-header">
+            <div class="status-dot gold" aria-hidden="true"></div>
+            <div>
+              <div class="status-label">Stato attuale</div>
+              <div class="status-value">Elettore 2026</div>
+            </div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-box">
+              <div class="stat-label">Hai contribuito</div>
+              <div class="stat-value">50€</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Diritto di voto</div>
+              <div class="stat-value stat-value-success">Attivo ✓</div>
+            </div>
+          </div>
+
+          <div class="dashboard-progress" aria-label="Obiettivo raggiunto">
+            <div class="progress-label">
+              <span>Obiettivo raggiunto</span>
+              <span>100%</span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill progress-bar-fill--complete" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <p class="dashboard-msg">
+            Hai maturato il <strong>diritto di voto</strong> per l'anno 2026.
+            Grazie per il tuo contributo alla comunità.
+          </p>
+        </div>
+
+        <!-- Stato: non autenticato (nascosto di default) -->
+        <div id="view-guest" class="dashboard-guest-view" hidden>
+          <p class="dashboard-msg dashboard-msg--spaced">
+            Accedi per visualizzare il tuo stato di partecipazione.
+          </p>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-action="login"
+            onclick="onLoginClick()">
+            Entra nel tuo account
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MISSIONE ═══════════════════ -->
+<section id="missione" aria-labelledby="missione-heading">
+  <div class="container">
+    <div class="missione-panel">
+      <h2 class="section-title" id="missione-heading">La nostra missione</h2>
+      <div class="silver-line" role="presentation"></div>
+
+      <p class="missione-quote">
+        "Questa piattaforma costruisce oggi la base della partecipazione di domani."
+      </p>
+
+      <p class="missione-body">
+        Il <strong>Fronte Meridionale</strong> nasce per costruire una comunità politica autonoma,
+        moderna e radicata sul territorio. Questa piattaforma facilita la partecipazione,
+        rafforza la comunità e prepara il percorso verso una governance trasparente e condivisa.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <p>© 2026 Fronte Meridionale — Partecipa, contribuisci, costruisci.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+/**
+ * Fronte Meridionale — Community Platform JS
+ *
+ * Hook stubs pronti per futura integrazione backend API.
+ * Ogni funzione è connessa tramite data-action e può essere
+ * collegata a chiamate REST o autenticazione senza modificare l'HTML.
+ */
+
+/* ── Utility: toast accessibile ── */
+let _toastTimer = null;
+function showToast(message) {
+  let toast = document.getElementById('fm-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'fm-toast';
+    toast.className = 'fm-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('fm-toast--visible');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(function () {
+    toast.classList.remove('fm-toast--visible');
+  }, 4000);
+}
+
+/* ── Utility: scroll rispettando prefers-reduced-motion ── */
+function smoothScrollTo(selector) {
+  var el = document.querySelector(selector);
+  if (!el) return;
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+}
+
+/* ── Configurazione ── */
+const CONFIG = {
+  API_BASE: '',
+  GOAL_VOTER: 50,
+  MIN_CONTRIBUTION: 15,
+};
+
+/* ── Mock dati utente ── */
+const MOCK_USER = {
+  authenticated: false,
+  status: 'guest',
+  totalContribution: 20,
+  year: 2026,
+};
+
+/* ──────────────────────────────────────────────
+   Hook: login / accesso
+────────────────────────────────────────────── */
+function onLoginClick() {
+  console.info('[FM] onLoginClick() — stub pronto per integrazione');
+  showToast('Accesso in preparazione. Torna presto!');
+}
+
+/* ──────────────────────────────────────────────
+   Hook: diventa sostenitore (15€)
+────────────────────────────────────────────── */
+function onJoinCommunity() {
+  console.info('[FM] onJoinCommunity() — stub pronto per integrazione');
+  showToast('Percorso sostenitore in preparazione.');
+}
+
+/* ──────────────────────────────────────────────
+   Hook: upgrade a elettore (50€ cumulativi)
+────────────────────────────────────────────── */
+function onJoinVoter() {
+  console.info('[FM] onJoinVoter() — stub pronto per integrazione');
+  showToast('Percorso elettore in preparazione.');
+}
+
+/* ──────────────────────────────────────────────
+   Hook: contribuisci ancora
+────────────────────────────────────────────── */
+function onContributeMore() {
+  console.info('[FM] onContributeMore() — stub pronto per integrazione');
+  smoothScrollTo('#contributi');
+}
+
+/* ──────────────────────────────────────────────
+   fetchUserStatus — carica stato utente
+────────────────────────────────────────────── */
+async function fetchUserStatus() {
+  try {
+    const data = MOCK_USER;
+    renderDashboard(data);
+  } catch (err) {
+    console.error('[FM] fetchUserStatus error:', err);
+    renderDashboard({ authenticated: false, status: 'guest' });
+  }
+}
+
+/* ── Rendering dashboard ── */
+function renderDashboard(user) {
+  const views = {
+    sostenitore: document.getElementById('view-sostenitore'),
+    elettore: document.getElementById('view-elettore'),
+    guest: document.getElementById('view-guest'),
+  };
+
+  Object.values(views).forEach(v => { if (v) v.hidden = true; });
+
+  const status = (!user.authenticated) ? 'guest' : (user.status || 'guest');
+  const view = views[status] || views.guest;
+  if (view) view.hidden = false;
+
+  if (status === 'sostenitore') {
+    const total = user.totalContribution || 0;
+    const goal = CONFIG.GOAL_VOTER;
+    const missing = Math.max(0, goal - total);
+    const pct = Math.min(100, Math.round((total / goal) * 100));
+
+    const elTotal = document.getElementById('user-total');
+    const elRemaining = document.getElementById('user-remaining');
+    const elPct = document.getElementById('user-progress-pct');
+    const elBar = document.getElementById('user-progress-bar');
+    const elMsg = document.getElementById('user-remaining-msg');
+    const elStatusLbl = document.getElementById('user-status-label');
+
+    if (elTotal) elTotal.textContent = total + '€';
+    if (elRemaining) elRemaining.textContent = missing + '€';
+    if (elPct) elPct.textContent = pct + '%';
+    if (elMsg) elMsg.textContent = missing + '€';
+    if (elBar) {
+      elBar.style.width = pct + '%';
+      elBar.setAttribute('aria-valuenow', pct);
+    }
+    if (elStatusLbl && user.year) {
+      elStatusLbl.textContent = 'Sostenitore ' + user.year;
+    }
+  }
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', function () {
+  fetchUserStatus();
+});
+</script>
+
 </body>
 </html>
