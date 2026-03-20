@@ -1,77 +1,561 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fronte Meridionale – Tesoreria Trasparente</title>
+  <meta
+    name="description"
+    content="Tesoreria trasparente su blockchain per il Fronte Meridionale. Donazioni verificabili pubblicamente e accessibili a tutti."
+  />
+  <style>
+    :root {
+      --bg-dark: #050914;
+      --bg-deep: #0b1220;
+      --card: rgba(10, 18, 32, 0.72);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fb;
+      --muted: #b8c2d3;
+      --primary: #2f7df6;
+      --primary-strong: #4aa3ff;
+      --accent: #79c2ff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(3, 7, 16, 0.72), rgba(3, 7, 16, 0.88)),
+        url("Immagini/background.jpg") center center / cover no-repeat fixed;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(47, 125, 246, 0.22), transparent 30%),
+        radial-gradient(circle at left center, rgba(121, 194, 255, 0.12), transparent 28%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 9, 20, 0.58);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-text strong {
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-text span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 24px rgba(47, 125, 246, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 84px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(121, 194, 255, 0.24);
+      background: rgba(121, 194, 255, 0.08);
+      color: #d8ebff;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: 1.06;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p.lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: white;
+      box-shadow: 0 0 30px rgba(47, 125, 246, 0.28);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-points span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #dbe7f6;
+      font-size: 0.92rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .wallet-card {
+      padding: 26px;
+    }
+
+    .wallet-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .wallet-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .wallet-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(121, 194, 255, 0.18);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 18px;
+      overflow-wrap: anywhere;
+      font-family: "Courier New", monospace;
+      color: #eaf4ff;
+    }
+
+    .wallet-note {
+      font-size: 0.92rem;
+      color: #d2def0;
+      margin-top: 8px;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .info-card {
+      padding: 24px;
+    }
+
+    .info-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .mission {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .mission-card {
+      padding: 28px;
+    }
+
+    .mission-card ul {
+      margin-top: 16px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .mission-card li + li {
+      margin-top: 10px;
+    }
+
+    .cta-section {
+      padding: 36px;
+      text-align: center;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 12px auto 24px;
+    }
+
+    footer {
+      padding: 36px 0 48px;
+      color: #aeb8c9;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .mission {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .wallet-card,
+      .info-card,
+      .mission-card,
+      .cta-section {
+        padding: 22px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .nav-cta {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NE..." alt="Logo Fronte Meridionale" />
+        <div class="brand-text">
+          <strong>Fronte Meridionale</strong>
+          <span>Tesoreria Trasparente</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#trasparenza">Trasparenza</a>
+        <a href="#missione">Missione</a>
+        <a href="#sostieni">Sostieni</a>
+        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="nav-cta">Canale Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-        <h2>Your Journey Starts Here</h2>
-        <p>Discover amazing content and connect with our community!</p>
-        <a href="#" class="cta">Get Started</a>
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Trasparenza pubblica • Verifica on-chain • Responsabilità</div>
+          <h1>Una tesoreria verificabile, pubblica e coerente con un nuovo modello di fiducia.</h1>
+          <p class="lead">
+            Il Fronte Meridionale presenta una struttura di sostegno fondata su chiarezza,
+            tracciabilità e accesso pubblico alle donazioni. La blockchain viene utilizzata
+            come strumento di controllo, trasparenza e responsabilità verso la comunità.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#sostieni" class="btn-primary">Sostieni il progetto</a>
+            <a href="#trasparenza" class="btn-secondary">Scopri come funziona</a>
+          </div>
+
+          <div class="hero-points">
+            <span>Registro pubblico</span>
+            <span>Verificabilità indipendente</span>
+            <span>Impostazione moderna e credibile</span>
+          </div>
+        </div>
+
+        <aside class="card wallet-card" id="sostieni">
+          <h2>Wallet ufficiale</h2>
+          <p>
+            Tutti i contributi possono essere controllati pubblicamente. Questo spazio è pensato
+            per offrire massima leggibilità e chiarezza.
+          </p>
+
+          <div class="wallet-box">
+            0x57f333c398c9625D84432aBD00871E2d8049cAaC
+          </div>
+
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%;">
+            Entra nel canale Telegram
+          </a>
+
+          <div class="wallet-note">
+            Verifica sempre con attenzione l’indirizzo prima di effettuare qualsiasi invio.
+          </div>
+        </aside>
+      </div>
     </section>
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We are committed to providing the best services.</p>
+
+    <section id="trasparenza">
+      <div class="container">
+        <div class="section-title">
+          <h2>Trasparenza come principio operativo</h2>
+          <p>
+            La struttura del sito è pensata per comunicare ordine, serietà e controllo pubblico,
+            evitando opacità e rafforzando il rapporto di fiducia con sostenitori e osservatori.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card info-card">
+            <h3>Verifica pubblica</h3>
+            <p>
+              Le informazioni essenziali sono presentate in modo diretto, leggibile e facilmente
+              consultabile da chiunque.
+            </p>
+          </article>
+
+          <article class="card info-card">
+            <h3>Identità autorevole</h3>
+            <p>
+              Il linguaggio visivo punta a un equilibrio tra istituzionalità e innovazione,
+              senza eccessi grafici.
+            </p>
+          </article>
+
+          <article class="card info-card">
+            <h3>Esperienza chiara</h3>
+            <p>
+              Layout pulito, contrasto elevato, pulsanti ben visibili e contenuti ordinati
+              per facilitare la consultazione.
+            </p>
+          </article>
+        </div>
+      </div>
     </section>
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>Explore the services we offer to help you succeed.</p>
+
+    <section id="missione">
+      <div class="container">
+        <div class="section-title">
+          <h2>Una comunicazione più solida e credibile</h2>
+          <p>
+            Questa homepage è stata impostata per dare un’immagine più professionale,
+            con una grafica scura, moderna e coerente con il messaggio del progetto.
+          </p>
+        </div>
+
+        <div class="mission">
+          <div class="card mission-card">
+            <h3>Obiettivi visivi</h3>
+            <ul>
+              <li>Rendere lo sfondo finalmente visibile e valorizzato.</li>
+              <li>Migliorare leggibilità, gerarchia dei contenuti e impatto iniziale.</li>
+              <li>Trasmettere serietà, ordine e innovazione.</li>
+            </ul>
+          </div>
+
+          <div class="card mission-card">
+            <h3>Scelte di design</h3>
+            <ul>
+              <li>Overlay scuro elegante sopra l’immagine di sfondo.</li>
+              <li>Palette blu, antracite e bianco per un’identità pulita.</li>
+              <li>Card con effetto vetro leggero e bordi morbidi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Reach out to us for any inquiries.</p>
+
+    <section>
+      <div class="container">
+        <div class="card cta-section">
+          <h2>Una presenza digitale più forte</h2>
+          <p>
+            Il sito ora punta a una presentazione più ordinata e autorevole, con un’impronta
+            visiva coerente tra contenuto, sfondo e messaggio pubblico.
+          </p>
+          <a href="#sostieni" class="btn-primary">Vai al wallet ufficiale</a>
+        </div>
+      </div>
     </section>
-    <footer>
-        <p>&copy; 2026 My Website. All rights reserved.</p>
-    </footer>
-    <style>
-        body {
-            background-image: url('images/imagesbackground.jpg.png');
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        .hero {
-            padding: 50px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-        }
-        section {
-            padding: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-        }
-    </style>
+  </main>
+
+  <footer>
+    <div class="container">
+      Fronte Meridionale • Tesoreria Trasparente
+    </div>
+  </footer>
 </body>
 </html>
