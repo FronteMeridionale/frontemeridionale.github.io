@@ -1,51 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-    <title>Fronte Meridionale</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Fronte Meridionale</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Fronte Meridionale</h1>
-        <button onclick="onLoginClick()">Partecipa</button>
+        <img src="FRONTE_MERIDIONALE_LOGOVETTORIALE_NERO_page-0001.jpg" alt="Logo Fronte Meridionale">
+        <h1>Benvenuti in Fronte Meridionale</h1>
     </header>
-    <section>
-        <h2>Mission</h2>
-        <p style="color: #999;">Our mission is to empower the community and foster engagement.</p>
+    <section id="hero">
+        <h2>Hero Section</h2>
+        <p>Benvenuto nel nostro sito!</p>
     </section>
-    <section>
-        <h2>Come funziona</h2>
-        <p>Join us and make a difference!</p>
+    <section id="come-funziona">
+        <h2>Come Funziona</h2>
+        <p>Descrizione su come funziona il servizio.</p>
     </section>
     <section id="contributi">
-        <h2>Contributions</h2>
-        <p>15€ = sostenitore</p>
-        <p>50€ cumulativi nell'anno = elettore</p>
+        <h2>Contributi</h2>
+        <p>Dettagli sui contributi degli utenti.</p>
     </section>
-    <script>
-        let user = { authenticated: false, status: 'guest' };
-
-        function onJoinCommunity() {
-            // Show a placeholder toast action
-            showToast('Thank you for joining the community!');
-            // Scroll to contributions
-            document.getElementById('contributi').scrollIntoView();
-        }
-
-        function onJoinVoter() {
-            // Show a placeholder toast action
-            showToast('Thank you for becoming a voter!');
-            // Scroll to contributions
-            document.getElementById('contributi').scrollIntoView();
-        }
-
-        function showToast(message) {
-            // Implementation for showing a toast message
-            console.log(message);
-        }
-
-        function onLoginClick() {
-            // Implement login functionality here
-            console.log('Login clicked');
-        }
-    </script>
+    <section id="dashboard">
+        <h2>Dashboard</h2>
+        <p>Informazioni sulla dashboard.</p>
+    </section>
+    <section id="missione">
+        <h2>Missione</h2>
+        <p>La nostra missione è...</p>
+    </section>
+    <footer>
+        <p>&copy; 2026 Fronte Meridionale. Tutti i diritti riservati.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
