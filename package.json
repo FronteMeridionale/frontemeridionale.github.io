@@ -1,1 +1,20 @@
-{\n  \"name\": \"nextjs-backend-first\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\"\n  },\n  \"dependencies\": {\n    \"next\": \"latest\",\n    \"react\": \"latest\",\n    \"react-dom\": \"latest\",\n    \"typescript\": \"latest\",\n    \"@supabase/supabase-js\": \"latest\",\n    \"stripe\": \"latest\",\n    \"@privy-io/react\": \"latest\",\n    \"viem\": \"latest\"\n  }\n}
+{
+  "name": "frontemeridionale",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.0.0",
+    "@privy-io/react-auth": "^2.0.0",
+    "@supabase/supabase-js": "latest",
+    "stripe": "latest",
+    "viem": "latest"
+  }
+}
